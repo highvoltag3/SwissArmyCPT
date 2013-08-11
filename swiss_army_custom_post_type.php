@@ -1,8 +1,8 @@
 <?php
-//reviews post type
+//Swiss Army Custom Post Type (sacpt)
 
 
-function stp_reviews() {
+function sacpt() {
 
 	/**
 	 * Enable the Reviews custom post type
@@ -10,22 +10,22 @@ function stp_reviews() {
 	 */
 
 	$labels = array(
-		'name' => __( 'Reviews', 'stp_reviews' ),
-		'singular_name' => __( 'Reviews Item', 'stp_reviews' ),
-		'add_new' => __( 'Add New Review', 'stp_reviews' ),
-		'add_new_item' => __( 'Add New Reviews Item', 'stp_reviews' ),
-		'edit_item' => __( 'Edit Reviews Item', 'stp_reviews' ),
-		'new_item' => __( 'Add New Reviews Item', 'stp_reviews' ),
-		'view_item' => __( 'View Item', 'stp_reviews' ),
-		'search_items' => __( 'Search Reviews', 'stp_reviews' ),
-		'not_found' => __( 'No review items found', 'stp_reviews' ),
-		'not_found_in_trash' => __( 'No review items found in trash', 'stp_reviews' )
+		'name' => __( 'Reviews', 'sacpt' ),
+		'singular_name' => __( 'Reviews Item', 'sacpt' ),
+		'add_new' => __( 'Add New Review', 'sacpt' ),
+		'add_new_item' => __( 'Add New Reviews Item', 'sacpt' ),
+		'edit_item' => __( 'Edit Reviews Item', 'sacpt' ),
+		'new_item' => __( 'Add New Reviews Item', 'sacpt' ),
+		'view_item' => __( 'View Item', 'sacpt' ),
+		'search_items' => __( 'Search Reviews', 'sacpt' ),
+		'not_found' => __( 'No review items found', 'sacpt' ),
+		'not_found_in_trash' => __( 'No review items found in trash', 'sacpt' )
 	);
 
 	$args = array(
     	'labels' => $labels,
     	'public' => true,
-		'supports' => array( 'title', 'editor', 'thumbnail', 'comments', 'revisions', 'author' ),
+		'supports' => array( 'title', 'editor', 'thumbnail', 'comments', 'revisions', 'author' ),  /*for support info see: http://codex.wordpress.org/Function_Reference/post_type_supports */
 		'capability_type' => 'post',
 		'rewrite' => array("slug" => "review"), // Permalinks format
 		'menu_position' => 5,
@@ -41,21 +41,21 @@ function stp_reviews() {
 	 */
 
     $taxonomy_review_category_labels = array(
-		'name' => _x( 'Reviews Categories', 'stp_reviews' ),
-		'singular_name' => _x( 'Reviews Category', 'stp_reviews' ),
-		'search_items' => _x( 'Search Reviews Categories', 'stp_reviews' ),
-		'popular_items' => _x( 'Popular Reviews Categories', 'stp_reviews' ),
-		'all_items' => _x( 'All Reviews Categories', 'stp_reviews' ),
-		'parent_item' => _x( 'Parent Reviews Category', 'stp_reviews' ),
-		'parent_item_colon' => _x( 'Parent Reviews Category:', 'stp_reviews' ),
-		'edit_item' => _x( 'Edit Reviews Category', 'stp_reviews' ),
-		'update_item' => _x( 'Update Reviews Category', 'stp_reviews' ),
-		'add_new_item' => _x( 'Add New Reviews Category', 'stp_reviews' ),
-		'new_item_name' => _x( 'New Reviews Category Name', 'stp_reviews' ),
-		'separate_items_with_commas' => _x( 'Separate review categories with commas', 'stp_reviews' ),
-		'add_or_remove_items' => _x( 'Add or remove review categories', 'stp_reviews' ),
-		'choose_from_most_used' => _x( 'Choose from the most used review categories', 'stp_reviews' ),
-		'menu_name' => _x( 'Reviews Categories', 'stp_reviews' ),
+		'name' => _x( 'Reviews Categories', 'sacpt' ),
+		'singular_name' => _x( 'Reviews Category', 'sacpt' ),
+		'search_items' => _x( 'Search Reviews Categories', 'sacpt' ),
+		'popular_items' => _x( 'Popular Reviews Categories', 'sacpt' ),
+		'all_items' => _x( 'All Reviews Categories', 'sacpt' ),
+		'parent_item' => _x( 'Parent Reviews Category', 'sacpt' ),
+		'parent_item_colon' => _x( 'Parent Reviews Category:', 'sacpt' ),
+		'edit_item' => _x( 'Edit Reviews Category', 'sacpt' ),
+		'update_item' => _x( 'Update Reviews Category', 'sacpt' ),
+		'add_new_item' => _x( 'Add New Reviews Category', 'sacpt' ),
+		'new_item_name' => _x( 'New Reviews Category Name', 'sacpt' ),
+		'separate_items_with_commas' => _x( 'Separate review categories with commas', 'sacpt' ),
+		'add_or_remove_items' => _x( 'Add or remove review categories', 'sacpt' ),
+		'choose_from_most_used' => _x( 'Choose from the most used review categories', 'sacpt' ),
+		'menu_name' => _x( 'Reviews Categories', 'sacpt' ),
     );
 
     $taxonomy_review_category_args = array(
@@ -73,7 +73,7 @@ function stp_reviews() {
 
 }
 
-add_action( 'init', 'stp_reviews' );
+add_action( 'init', 'sacpt' );
 
 // Allow thumbnails to be used on review post type
 
@@ -84,24 +84,24 @@ add_theme_support( 'post-thumbnails', array( 'review' ) );
  * http://wptheming.com/2010/07/column-edit-pages/
  */
 
-function stp_reviews_edit_columns($review_columns){
+function sacpt_edit_columns($review_columns){
 	$review_columns = array(
 		"cb" => "<input type=\"checkbox\" />",
 		"title" => _x('Title', 'column name'),
-		"review_thumbnail" => __('Thumbnail', 'stp_reviews'),
-		"review_category" => __('Category', 'stp_reviews'),
-		"review_tag" => __('Tags', 'stp_reviews'),
-		"author" => __('Author', 'stp_reviews'),
-		"comments" => __('Comments', 'stp_reviews'),
-		"date" => __('Date', 'stp_reviews'),
+		"review_thumbnail" => __('Thumbnail', 'sacpt'),
+		"review_category" => __('Category', 'sacpt'),
+		"review_tag" => __('Tags', 'sacpt'),
+		"author" => __('Author', 'sacpt'),
+		"comments" => __('Comments', 'sacpt'),
+		"date" => __('Date', 'sacpt'),
 	);
 	$review_columns['comments'] = '<div class="vers"><img alt="Comments" src="' . esc_url( admin_url( 'images/comment-grey-bubble.png' ) ) . '" /></div>';
 	return $review_columns;
 }
 
-add_filter( 'manage_edit-review_columns', 'stp_reviews_edit_columns' );
+add_filter( 'manage_edit-review_columns', 'sacpt_edit_columns' );
 
-function stp_reviews_columns_display($review_columns, $post_id){
+function sacpt_columns_display($review_columns, $post_id){
 
 	switch ( $review_columns )
 
@@ -118,7 +118,7 @@ function stp_reviews_columns_display($review_columns, $post_id){
 			if ( isset($thumb) ) {
 				echo $thumb;
 			} else {
-				echo __('None', 'stp_reviews');
+				echo __('None', 'sacpt');
 			}
 		break;
 
@@ -128,7 +128,7 @@ function stp_reviews_columns_display($review_columns, $post_id){
 			if ( $category_list = get_the_term_list( $post_id, 'review_category', '', ', ', '' ) ) {
 				echo $category_list;
 			} else {
-				echo __('None', 'stp_reviews');
+				echo __('None', 'sacpt');
 			}
 		break;
 
@@ -138,13 +138,13 @@ function stp_reviews_columns_display($review_columns, $post_id){
 			if ( $tag_list = get_the_term_list( $post_id, 'post_tag', '', ', ', '' ) ) {
 				echo $tag_list;
 			} else {
-				echo __('None', 'stp_reviews');
+				echo __('None', 'sacpt');
 			}
 		break;
 	}
 }
 
-add_action( 'manage_posts_custom_column',  'stp_reviews_columns_display', 10, 2 );
+add_action( 'manage_posts_custom_column',  'sacpt_columns_display', 10, 2 );
 
 /**
  * Add Review count to "Right Now" Dashboard Widget
@@ -186,7 +186,7 @@ add_action( 'right_now_content_table_end', 'add_review_counts' );
  * Add contextual help menu
  */
 
-function stp_reviews_add_help_text( $contextual_help, $screen_id, $screen ) {
+function sacpt_add_help_text( $contextual_help, $screen_id, $screen ) {
 	if ( 'review' == $screen->id ) {
 		$contextual_help =
 		'<p>' . __('The title field and the big Post Editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen.') . '</p>' .
@@ -225,27 +225,27 @@ function stp_reviews_add_help_text( $contextual_help, $screen_id, $screen ) {
   return $contextual_help;
 }
 
-add_action( 'contextual_help', 'stp_reviews_add_help_text', 10, 3 );
+add_action( 'contextual_help', 'sacpt_add_help_text', 10, 3 );
 
-function stp_reviews_register_settings() {
-	register_setting('stp_reviews_settings', 'stp_reviews_settings', 'stp_reviews_settings_validate');
+function sacpt_register_settings() {
+	register_setting('sacpt_settings', 'sacpt_settings', 'sacpt_settings_validate');
 }
-add_action('admin_init', 'stp_reviews_register_settings');
+add_action('admin_init', 'sacpt_register_settings');
 
-function stp_reviews_update_settings() {
-	global $stp_reviews_settings, $stp_reviews_defaults;
-	if ( isset($stp_reviews_settings['update']) ) {
-		if ( !is_numeric($stp_reviews_settings['per_page'] ) || $stp_reviews_settings['per_page'] < 1 ) {
+function sacpt_update_settings() {
+	global $sacpt_settings, $sacpt_defaults;
+	if ( isset($sacpt_settings['update']) ) {
+		if ( !is_numeric($sacpt_settings['per_page'] ) || $sacpt_settings['per_page'] < 1 ) {
 			echo '<div class="error fade" id="message"><p>The Entries Per Page setting must be a positive integer, value reset to default.</p></div>';
-			$stp_reviews_settings['per_page'] = $stp_reviews_defaults['per_page'];
+			$sacpt_settings['per_page'] = $sacpt_defaults['per_page'];
 		}
-		$stp_reviews_settings['per_page'] = min( 80, $stp_reviews_settings['per_page'] );
-		echo '<div class="updated fade" id="message"><p>Custom Post Order settings '.$stp_reviews_settings['update'].'.</p></div>';
-		unset($stp_reviews_settings['update']);
-		update_option('stp_reviews_settings', $stp_reviews_settings);
+		$sacpt_settings['per_page'] = min( 80, $sacpt_settings['per_page'] );
+		echo '<div class="updated fade" id="message"><p>Custom Post Order settings '.$sacpt_settings['update'].'.</p></div>';
+		unset($sacpt_settings['update']);
+		update_option('sacpt_settings', $sacpt_settings);
 	}
 }
-function stp_reviews_settings_validate($input) {
+function sacpt_settings_validate($input) {
 	$input['post'] = ($input['post'] == 1 ? 1 : 0);
 	$args = array( 'public' => true, '_builtin' => false );
 	$output = 'objects';
@@ -258,10 +258,10 @@ function stp_reviews_settings_validate($input) {
 }
 
 //we need some custom scripts here.
-add_action( 'admin_print_scripts-post-new.php', 'stp_reviews_admin_script', 11 );
-add_action( 'admin_print_scripts-post.php', 'stp_reviews_admin_script', 11 );
+add_action( 'admin_print_scripts-post-new.php', 'sacpt_admin_script', 11 );
+add_action( 'admin_print_scripts-post.php', 'sacpt_admin_script', 11 );
 
-function stp_reviews_admin_script() {
+function sacpt_admin_script() {
     global $post_type;
     if( 'review' == $post_type ) :
     	wp_enqueue_script( 'select2-plugin', get_stylesheet_directory_uri() . '/js/select2.min.js' );
@@ -289,45 +289,32 @@ add_action('add_meta_boxes', 'add_review_metabox');
 $prefix = 'review_';
 $custom_meta_fields = array(
 	array(
-		'label'	=> 'Featured',
-		'desc'	=> 'Mark as featured',
-		'id'	=> 'featured',
+		'placeholdertext' => 'Program title',
+		'id'	=> $prefix.'title_text',
+		'type'	=> 'title-name'
+	),
+	array(
+		'label'	=> 'Checkbox',
+		'desc'	=> 'Checkbox example',
+		'id'	=> $prefix.'checkbox',
 		'type'	=> 'checkbox'
 	),
 	array(
-		'label'	=> 'Carousel Text',
-		'desc'	=> 'Please specify the text to display on the carousel.',
-		'id'	=> $prefix.'carousel_text',
+		'label'	=> 'Textarea',
+		'desc'	=> 'Textarea description',
+		'id'	=> $prefix.'textarea',
 		'type'	=> 'textarea'
 	),
 	array(
-		'label'	=> 'Story Image',
-		'desc'	=> 'Upload an image for this story.',
-		'id'	=> $prefix.'storyimage',
+		'label'	=> 'Image',
+		'desc'	=> 'Upload an image example.',
+		'id'	=> $prefix.'image',
 		'type'	=> 'image'
 	),
-	array(
-		'label'	=> 'Pros',
-		'desc'	=> 'Pros of the game?',
-		'id'	=> $prefix.'pros',
-		'type'	=> 'textarea'
-	),
-	array(
-		'label'	=> 'Cons',
-		'desc'	=> 'What are the cons of this game?',
-		'id'	=> $prefix.'cons',
-		'type'	=> 'textarea'
-	),
-	array(
-		'label'	=> 'Bottom Line',
-		'desc'	=> 'The bottom line of the game.',
-		'id'	=> $prefix.'bottomline',
-		'type'	=> 'textarea'
-	),
 	array (
-		'label'	=> 'STP Score',
-		'desc'	=> 'What would the score be?',
-		'id'	=> $prefix.'stpscore',
+		'label'	=> 'Dropdown (select field)',
+		'desc'	=> 'Dropdown select field example',
+		'id'	=> $prefix.'selectfield',
 		'type'	=> 'radio',
 		'options' => array (
 			'one' => array (
@@ -349,23 +336,17 @@ $custom_meta_fields = array(
 		)
 	),
 	array(
-		'label'	=> 'Exclude from Homepage',
-		'desc'	=> 'Should this story be excluded from the homepage?',
-		'id'	=> $prefix.'homeexclude',
-		'type'	=> 'checkbox'
+		'label'	=> 'Repetable textarea field example',
+		'desc'	=> 'You can add or create fields here.',
+		'id'	=> $prefix.'repeatabletextareafields',
+		'type'	=> 'repeatable_textarea'
 	),
 	array(
-		'label'	=> 'Updates',
-		'desc'	=> 'You can add or create updates here.',
-		'id'	=> $prefix.'update',
-		'type'	=> 'repeatable_update'
+		'label'	=> 'Repetable input field example',
+		'desc'	=> 'You can add or create fields here.',
+		'id'	=> $prefix.'repeatabletinputfields',
+		'type'	=> 'repeatable'
 	),
-	array(
-		'label'	=> 'Game for this review',
-		'desc'	=> 'Type the name of the game the review belongs to',
-		'id'	=> $prefix.'gameID',
-		'type'	=> 'association'
-	)
 );
 
 // add some custom js to the head of the page
@@ -393,6 +374,10 @@ function add_custom_scripts() {
 							jQuery( "#'.$field['id'].'" ).val( ui.value );
 						}
 					});';
+		}
+		// change Enter title here for this:
+		if($field['type'] == 'title-name' && 'program' == $post_type ) {
+			$output .= 'jQuery( "#title-prompt-text" ).text( "'.$field['placeholdertext'].'");';
 		}
 	}
 
@@ -429,6 +414,12 @@ function show_custom_meta_box() {
 						echo '<textarea name="'.$field['id'].'" id="'.$field['id'].'" cols="60" rows="4">'.$meta.'</textarea>
 								<br /><span class="description">'.$field['desc'].'</span>';
 					break;
+					// WYSIWYG
+					case 'wysiwyg':
+						wp_editor( $meta, $field['id'] );
+						//lets remove media option here... if ask for we can enable it again.
+						echo '<style>a.button.insert-media { display: none; }</style>';
+					break;
 					// checkbox
 					case 'checkbox':
 						echo '<input type="checkbox" name="'.$field['id'].'" id="'.$field['id'].'" ',$meta ? ' checked="checked"' : '','/>
@@ -441,15 +432,6 @@ function show_custom_meta_box() {
 							echo '<option', $meta == $option['value'] ? ' selected="selected"' : '', ' value="'.$option['value'].'">'.$option['label'].'</option>';
 						}
 						echo '</select><br /><span class="description">'.$field['desc'].'</span>';
-					break;
-					// association
-					case 'association':
-                        $items = array_map( function($obj){return $obj->post_title;}, get_associated_titles(get_the_ID()) );
-                        $values = array_map( function($obj){return $obj->ID;}, get_associated_titles(get_the_ID()) );
-                        $titles = implode('|', $items);
-                        $values = implode(',', $values);
-						echo '<input type="hidden" name="'.$field['id'].'" id="'.$titles.'" class="bigdrop_reviews" style="width: 60%; display: none;" value="'.$values.'" />';
-						echo '<br /><span class="description">'.$field['desc'].'</span>';
 					break;
 					// radio
 					case 'radio':
@@ -484,14 +466,15 @@ function show_custom_meta_box() {
 					break;
 					// post_list
 					case 'post_list':
+					$post_type = $field['post_type'] ? $field['post_type'] : 'posts';
 					$items = get_posts( array (
-						'post_type'	=> $field['post_type'],
+						'post_type'	=> array( $post_type ),
 						'posts_per_page' => -1
 					));
 						echo '<select name="'.$field['id'].'" id="'.$field['id'].'">
 								<option value="">Select One</option>'; // Select One
 							foreach($items as $item) {
-								echo '<option value="'.$item->ID.'"',$meta == $item->ID ? ' selected="selected"' : '','>'.$item->post_type.': '.$item->post_title.'</option>';
+								echo '<option value="'.$item->ID.'"',$meta == $item->ID ? ' selected="selected"' : '','> '.$item->post_title.'</option>';
 							} // end foreach
 						echo '</select><br /><span class="description">'.$field['desc'].'</span>';
 					break;
@@ -539,7 +522,7 @@ function show_custom_meta_box() {
 							<span class="description">'.$field['desc'].'</span>';
 					break;
 					// repeatable
-					case 'repeatable_update':
+					case 'repeatable_textarea':
 						echo '<a class="repeatable-add button" href="#">+</a>
 								<ul id="'.$field['id'].'-repeatable" class="custom_repeatable">';
 						$i = 0;
@@ -557,6 +540,23 @@ function show_custom_meta_box() {
 						}
 						echo '</ul>
 							<span class="description">'.$field['desc'].'</span>';
+					break;
+					//US address
+					case 'address':
+						echo '<span class="description">'.$field['desc'].'</span><br>';
+						echo '<input type="text" name="'.$field['id'].'[_street]" id="'.$field['id'].'_street" value="'.$meta['_street'].'" size="30" placeholder="Street Address" />
+								<br />';
+						echo '<input type="text" name="'.$field['id'].'[_city]" id="'.$field['id'].'_city" value="'.$meta['_city'].'" size="30" placeholder="City"/>
+								<br />';
+						echo '<input type="text" name="'.$field['id'].'[_state]" id="'.$field['id'].'_state" value="'.$meta['_state'].'" size="30" placeholder="State"/>
+								<br />';
+						echo '<input type="text" name="'.$field['id'].'[_zipcode]" id="'.$field['id'].'_zipcode" value="'.$meta['_zipcode'].'" size="10" placeholder="Zip code"/>
+								<br />';
+					break;
+					// HTML5 URL
+					case 'url':
+						echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" placeholder="http://" pattern="https?://.+" />
+								<br /><span class="description">'.$field['desc'].'</span>';
 					break;
 				} //end switch
 		echo '</td></tr>';
