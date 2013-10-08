@@ -347,6 +347,13 @@ $custom_meta_fields = array(
 		'id'	=> $prefix.'repeatabletinputfields',
 		'type'	=> 'repeatable'
 	),
+	array(
+		'label'	=> 'Post list checkboxes',
+		'desc'	=> 'Select one or more posts',
+		'id'	=> $prefix.'post_list',
+		'type'	=> 'post_list_checkbox',
+		'post_type' => 'post' //post_type
+	),
 );
 
 // add some custom js to the head of the page
@@ -540,6 +547,19 @@ function show_custom_meta_box() {
 						}
 						echo '</ul>
 							<span class="description">'.$field['desc'].'</span>';
+					break;
+					// post_list_checkbox
+					case 'post_list_checkbox':
+						$post_type = $field['post_type'] ? $field['post_type'] : 'posts';
+						$items = get_posts( array (
+							'post_type'	=> array( $post_type ),
+							'posts_per_page' => -1
+						));
+						foreach ( $items as $item ) {
+							echo '<input type="checkbox" value="'.$item->ID.'" name="'.$field['id'].'[]" id="'.$item->ID.'"',$meta && in_array($item->ID, $meta) ? ' checked="checked"' : '',' />
+							<label for="'.$item->ID.'">'.$item->post_title.'</label><br />';
+						}// end foreach
+						echo '<br /><span class="description">'.$field['desc'].'</span>';
 					break;
 					//US address
 					case 'address':
